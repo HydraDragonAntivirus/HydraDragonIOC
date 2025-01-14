@@ -20,18 +20,21 @@ except yara.SyntaxError as e:
     print(f"Error compiling Yara rule: {e}")
     exit(1)
 
+# Store matches for summary
+match_results = []
+
 # Function to scan a single file
 def scan_file(file_path):
-    print(f"Scanning started for: {file_path}")
     matches = rules.match(file_path)
     if matches:
-        print(f"Matches found in {file_path}:")
-        for match in matches:
-            print(f"Rule: {match.rule}")
-            for string in match.strings:
-                print(f"Matched string: {string}")
+        # Append file and match details to results
+        match_results.append({
+            "file": file_path,
+            "matches": matches
+        })
+        print(f"Match found in: {file_path}")
     else:
-        print(f"No matches found in {file_path}")
+        print(f"No match in: {file_path}")
 
 # Check if the path exists
 if os.path.exists(payload_path):
@@ -49,3 +52,15 @@ if os.path.exists(payload_path):
         print(f"Invalid path: {payload_path}")
 else:
     print(f"Path not found: {payload_path}")
+
+# Print summary of matches
+if match_results:
+    print("\nSummary of Matches:")
+    for result in match_results:
+        print(f"File: {result['file']}")
+        for match in result["matches"]:
+            print(f"  Rule: {match.rule}")
+            for string in match.strings:
+                print(f"    Matched string: {string}")
+else:
+    print("\nNo matches found in the scanned files.")
