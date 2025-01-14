@@ -4,8 +4,6 @@ import os
 # Get current working directory
 script_dir = os.getcwd()
 
-rule_file = os.path.join(script_dir, 'yararule', 'HackToolPythonPyramid.yar')
-payloads_file = os.path.join(script_dir, 'payloads', 'onemorestepleft.py')
 # Hardcoded path for the Yara rule file
 rule_file = os.path.join(script_dir, 'yararules', 'HackToolPythonPyramid.yar')
 
