@@ -4,8 +4,10 @@ rule HackTool_Python_Pyramid_Generic {
         author = "Emirhan Ucan"
         date = "2024-01-14"
         version = "0.2"
-        reference = "https://www.reddit.com/r/computerviruses/comments/1i0wf7w/fake_youtube_parnership/"
-
+        reference = "https://www.reddit.com/r/computerviruses/comments/1i0wf7w/fake_youtube_parnership/",
+        reference2 = "https://www.virusview.net/malware/HackTool/Python/Pyramid"
+        hash1 = "a08b0637632f4eb6de1512bb44f9ba787aaab2e92b0fb1f707ac6b8c0a366ccf"
+        hash2 = "33f404d7d5feed8819b0981e7315ac7b213edfaaaf6d1ecd185c23ef5d77ccc9"
     strings:
         $in_memory_exec = /exec\(.*\.decode\(.*utf-8.*\)\)/ nocase
         $chacha20_func = /def\s+yield_chacha20_xor_stream/ nocase

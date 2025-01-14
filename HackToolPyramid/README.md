@@ -1,9 +1,10 @@
 # MALWARE SUMMARY 
 - I find very weird malware and now understand why it's not detected at VirusTotal, it downloads at open another payload and other payload until get last one, the last one actually connects C2 server then don't compiles the code it uses memory to dump malware and uses python 3.10 with uncompiled python source code file to not get detected, it's HackTool in general so antiviruses flags as HackTool at last payload (Example Kaspersky, ESET, Sophos, Google) but most of them didn't detect
 
-## REFERENCE
+## REFERENCES
 
 https://www.reddit.com/r/computerviruses/comments/1i0wf7w/fake_youtube_parnership/
+https://www.virusview.net/malware/HackTool/Python/Pyramid
 
 ### Virustotal
 
