@@ -1,7 +1,7 @@
 rule HackTool_Python_Pyramid {
     meta:
         description = "Detects Pyramid Python-based memory injection and execution tool"
-        author = "Claude"
+        author = "Emirhan Ucan"
         date = "2025-01-14"
         malware_type = "HackTool"
         severity = "Critical"
