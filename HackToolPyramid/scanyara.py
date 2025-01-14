@@ -5,7 +5,7 @@ import os
 script_dir = os.getcwd()
 
 # Hardcoded path for the Yara rule file
-rule_file = os.path.join(script_dir, 'yararules', 'HackToolPythonPyramid.yar')
+rule_file = os.path.join(script_dir, 'yararule', 'HackToolPythonPyramid.yar')
 
 # Prompt the user to input the payload file path
 payloads_file_input = input(f"Enter the path to the payload file (relative to {script_dir}): ")
@@ -16,7 +16,7 @@ payloads_file = os.path.join(script_dir, payloads_file_input)
 # Load Yara rule
 try:
     rules = yara.compile(filepath=rule_file)
-except yara.YaraSyntaxError as e:
+except yara.SyntaxError as e:
     print(f"Error compiling Yara rule: {e}")
     exit(1)
 
