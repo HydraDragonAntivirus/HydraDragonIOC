@@ -34,8 +34,6 @@ def scan_file(file_path, file_index, total_files):
             "matches": matches
         })
         print(f"Match found in: {file_path}")
-    else:
-        print(f"No match in: {file_path}")
 
 # Check if the path exists
 if os.path.exists(payload_path):
