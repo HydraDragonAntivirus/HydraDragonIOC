@@ -1,5 +1,6 @@
 import yara
 import os
+from tqdm import tqdm
 
 # Get the current working directory
 script_dir = os.getcwd()
@@ -24,8 +25,7 @@ except yara.SyntaxError as e:
 match_results = []
 
 # Function to scan a single file
-def scan_file(file_path, file_index, total_files):
-    print(f"Scanning file {file_index + 1} of {total_files}: {file_path}")
+def scan_file(file_path):
     matches = rules.match(file_path)
     if matches:
         # Append file and match details to results
@@ -33,7 +33,6 @@ def scan_file(file_path, file_index, total_files):
             "file": file_path,
             "matches": matches
         })
-        print(f"Match found in: {file_path}")
 
 # Check if the path exists
 if os.path.exists(payload_path):
@@ -44,7 +43,6 @@ if os.path.exists(payload_path):
         files_to_scan.append(payload_path)
     elif os.path.isdir(payload_path):
         # If it's a directory, gather all files within it
-        print(f"Scanning all files in directory: {payload_path}")
         for root, _, files in os.walk(payload_path):
             for file in files:
                 files_to_scan.append(os.path.join(root, file))
@@ -55,9 +53,11 @@ if os.path.exists(payload_path):
     # Total number of files to scan
     total_files = len(files_to_scan)
     
-    # Scan each file with progress
-    for index, file_path in enumerate(files_to_scan):
-        scan_file(file_path, index, total_files)
+    print(f"Scanning {total_files} files...")
+    
+    # Use tqdm to show a progress bar
+    for file_path in tqdm(files_to_scan, desc="Scanning files", unit="file"):
+        scan_file(file_path)
 else:
     print(f"Path not found: {payload_path}")
     exit(1)
