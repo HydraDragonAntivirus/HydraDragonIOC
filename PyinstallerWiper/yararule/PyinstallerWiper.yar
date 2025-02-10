@@ -3,7 +3,7 @@ rule PyinstallerWiper
     meta:
         description = "Detects indicators of the PyinstallerWiper malware variant that downloads files to system directories, corrupts user files, and disables recovery"
         author = "Emirhan Ucan"
-        reference = "https://www.virustotal.com/gui/file/3227a61794ae08b789eea4d1dcc190c67ce47ea94d78a41cba867b7aaeebe4a7/detection"
+        reference = "https://github.com/HydraDragonAntivirus/HydraDragonIOC/tree/main/PyinstallerWiper"
         hash = "3227a61794ae08b789eea4d1dcc190c67ce47ea94d78a41cba867b7aaeebe4a7"
         date = "2025-02-10"
 
